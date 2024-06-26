@@ -2,6 +2,8 @@ package com.example.StockUp;
 
 import com.example.StockUp.object.Stock;
 import com.example.StockUp.service.StockService;
+
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -10,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
+@OpenAPIDefinition
 public class StockUpApplication {
 
 	private static final Logger logger = LoggerFactory.getLogger(StockUpApplication.class);
