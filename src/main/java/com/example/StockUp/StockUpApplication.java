@@ -21,6 +21,8 @@ public class StockUpApplication {
 		SpringApplication.run(StockUpApplication.class, args);
 	}
 
+	/*
+
 	@Bean
 	CommandLineRunner init(StockService stockService) {
 		return args -> {
@@ -43,4 +45,6 @@ public class StockUpApplication {
 		stock.setClosingPrice(100.0f);
 		return stock;
 	}
+
+	*/
 }
