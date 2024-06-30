@@ -1,3 +1,7 @@
+.hidden {
+    display: none;
+}
+
 element.style {}
 
 .bg-primary-gradient {
@@ -217,3 +221,4 @@ body {
     --bs-form-invalid-color: #dc3545;
     --bs-form-invalid-border-color: #dc3545;
 }
+
