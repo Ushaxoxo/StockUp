@@ -22,31 +22,82 @@
         }
     </script>
 
-    <nav id="mainNav" class="navbar navbar-expand-md sticky-top navbar-shrink py-3 bg-primary-gradient"
-        style="border-bottom: 1px solid #ccc !important;">
+    <nav id="mainNav" class="navbar navbar-expand-md sticky-top navbar-shrink py-3 bg-black" style="border-bottom: 1px solid #ccc !important;">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <span
+            <a class="navbar-brand d-flex align-items-center text-white" href="#">
+                <!--<span
                     class="bs-icon-sm bs-icon-circle bs-icon-primary shadow d-flex justify-content-center align-items-center me-2 bs-icon">
-
-                </span>
-                <span>
-                    StockUp
-                </span>
+                </span>-->
+                    <h3>StockUpSan</h3>
             </a>
-            <div id="navcol-1" class="collapse navbar-collapse">
+            <div class="col-6 mt-2 d-flex justify-content-end">
+                <nav>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="#" class="nav-link-active hover-underline-animation-white mr-3  text-white">Home</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white">|</a></li>
+                        <li class="list-inline-item"><a href="#" class="nav-link-active hover-underline-animation-white text-white">About Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <!--<div id="navcol-1" class="collapse navbar-collapse">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item mr-2">
-                        <a class="nav-link-active hover-underline-animation mr-3" href="/">Nav 1</a>
+                        <a class="nav-link-active hover-underline-animation mr-3  text-white" href="/">Nav 1</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link-active hover-underline-animation" href="/">Nav 2</a>
+                        <a class="nav-link-active hover-underline-animation  text-white" href="/">Nav 2</a>
                     </li>
                 </ul>
-                <a class="btn btn-primary shadow" role="button" href="/">Log Out</a>
+                <a class="btn btn-primary shadow" role="button" href="/">Log Out</a>-->
             </div>
         </div>
     </nav>
+
+    <div id="currentprice" class="container">
+        <div class="card mt-2 p-4" id="card1">
+                <h3 class="card-title">Current Stock Prices</h3>
+            
+        <div class="row justify-content-center align-items-center">
+            <div class="col-4 col-md-2">
+                <div class="card mt-2">
+                    <div class="card-header hover-underline-animation"><h5>Stock 1</h5></div>
+                    <div class="card-body" id="st_price1">price</div>
+                </div>
+            </div>
+            <div class="col-4 col-md-2">
+                <div class="card mt-2">
+                    <div class="card-header hover-underline-animation"><h5>Stock 2</h5></div>
+                    <div class="card-body" id="st_price2">price</div>
+                </div>
+            </div>
+            <div class="col-4 col-md-2">
+                <div class="card mt-2">
+                    <div class="card-header hover-underline-animation"><h5>Stock 3</h5></div>
+                    <div class="card-body" id="st_price3">price</div>
+                </div>
+            </div>
+            <div class="col-4 col-md-2">
+                <div class="card mt-2">
+                    <div class="card-header hover-underline-animation"><h5>Stock 4</h5></div>
+                    <div class="card-body" id="st_price4">price</div>
+                </div>
+            </div>
+            <div class="col-4 col-md-2">
+                <div class="card mt-2">
+                    <div class="card-header hover-underline-animation"><h5>Stock 5</h5></div>
+                    <div class="card-body" id="st_price5">price</div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <a class="btn btn-primary shadow d-flex align-items-center mt-4" role="button" href="/" style="height: 30px; width: 90px; align-content:center; justify-content: center;">Refresh</a>
+            <!--<button class="btn bg-info my-2 col-2">Submit</button>
+            <div class="col mt-3 border-bottom justify-content-center align-items-center">
+                <a class="btn btn-primary shadow" role="button" href="/">Refresh</a>
+            </div>-->
+        </div>
+        </div>    
+    </div>
     
     <section id="maincontent" class="py-5 row">
         <div class="col-5 py-5" style="margin-left: auto;">
