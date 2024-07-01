@@ -40,4 +40,11 @@ public class UserService {
 
     }
 
+    public void updateUserScore(String name, float additionalScore) throws ExecutionException, InterruptedException {
+        Person person = getUserDetails(name);
+        if (person != null) {
+            person.setScore((int) (person.getScore() + additionalScore));
+            saveUserDetails(person);
+        }
+    }
 };
