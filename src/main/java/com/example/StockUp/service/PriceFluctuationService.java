@@ -80,11 +80,11 @@ public class PriceFluctuationService {
 
     private void removeOldLogs(String symbol) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        Timestamp thirtyMinutesAgo = Timestamp.ofTimeSecondsAndNanos(Timestamp.now().getSeconds() - 1800, 0);
+        Timestamp xMinutesAgo = Timestamp.ofTimeSecondsAndNanos(Timestamp.now().getSeconds() - (logRetentionDurationMinutes* 60L), 0);
 
         ApiFuture<QuerySnapshot> future = dbFirestore.collection("stockPriceLogs")
                 .whereEqualTo("symbol", symbol)
-                .whereLessThan("timestamp", thirtyMinutesAgo)
+                .whereLessThan("timestamp", xMinutesAgo)
                 .get();
 
         List<String> oldLogsIds = future.get().getDocuments().stream()
