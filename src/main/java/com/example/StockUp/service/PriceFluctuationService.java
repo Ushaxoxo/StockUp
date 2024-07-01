@@ -33,9 +33,6 @@ public class PriceFluctuationService {
     @Value("${priceUpdateIntervalSeconds}")
     private int priceUpdateIntervalSeconds;
 
-    @Value("${maxLogRecords}")
-    private int maxLogRecords;
-
     @Autowired
     public PriceFluctuationService(StockService stockService) {
         this.stockService = stockService;
