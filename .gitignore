@@ -3,7 +3,6 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-src/serviceAccountKey.json
 ### STS ###
 .apt_generated
 .classpath
@@ -34,3 +33,4 @@ build/
 
 ### SECURITY ###
 serviceAccountKey.json
+src/serviceAccountKey.json
