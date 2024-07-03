@@ -15,13 +15,13 @@ import java.util.concurrent.ExecutionException;
 public class UserService {
     public String saveUserDetails(Person person) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("users").document(person.getName()).set(person);
+        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("users").document(person.getUsername()).set(person);
         return collectionsApiFuture.get().getUpdateTime().toString();
     }
 
-    public Person getUserDetails(String name) throws ExecutionException, InterruptedException {
+    public Person getUserDetails(String username) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        DocumentReference docRef = dbFirestore.collection("users").document(name);
+        DocumentReference docRef = dbFirestore.collection("users").document(username);
         ApiFuture<DocumentSnapshot> future = docRef.get();
         DocumentSnapshot document = future.get();
         Person person = null;
@@ -32,16 +32,16 @@ public class UserService {
         return person;
     }
 
-    public String deleteUser(String name) throws ExecutionException, InterruptedException {
+    public String deleteUser(String username) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        DocumentReference docRef = dbFirestore.collection("users").document(name);
+        DocumentReference docRef = dbFirestore.collection("users").document(username);
         ApiFuture<WriteResult> future = docRef.delete();
         return future.get().getUpdateTime().toString();
 
     }
 
-    public void updateUserScore(String name, float additionalScore) throws ExecutionException, InterruptedException {
-        Person person = getUserDetails(name);
+    public void updateUserScore(String username, float additionalScore) throws ExecutionException, InterruptedException {
+        Person person = getUserDetails(username);
         if (person != null) {
             person.setScore((int) (person.getScore() + additionalScore));
             saveUserDetails(person);

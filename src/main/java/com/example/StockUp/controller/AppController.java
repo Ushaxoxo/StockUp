@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.concurrent.ExecutionException;
 
 @RestController
+@CrossOrigin("*")
 public class AppController {
     @Autowired
     UserService userService;
