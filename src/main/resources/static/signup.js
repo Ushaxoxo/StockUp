@@ -50,7 +50,7 @@ submit.addEventListener("click", function (event) {
 });
 
 function saveUserDetails(email, username, fname, lname) {
-    const userDetails = {
+    const person = {
         email: email,
         username: username,
         name: `${fname} ${lname}`,
@@ -62,7 +62,7 @@ function saveUserDetails(email, username, fname, lname) {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(userDetails),
+        body: JSON.stringify(person),
     })
         .then((response) => response.json())
         .then((data) => {
@@ -70,5 +70,11 @@ function saveUserDetails(email, username, fname, lname) {
         })
         .catch((error) => {
             console.error("Error saving user details:", error);
+            displayError(error.message);
         });
+}
+function displayError(errorMessage) {
+    const errorElement = document.getElementById("error");
+    errorElement.textContent = errorMessage;
+    errorElement.style.display = "block";
 }

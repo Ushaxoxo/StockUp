@@ -20,6 +20,12 @@ public class AppController {
     StockService stockService;
     @Autowired
     userStockService userstockService;
+    
+    @GetMapping("/")
+    public String index() {
+        return "index";  // this should correspond to src/main/resources/templates/index.html
+    }
+
 
     @GetMapping("/getUserDetails")
     public Person getUserDetails(@RequestHeader String name) throws ExecutionException, InterruptedException {
