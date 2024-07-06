@@ -14,7 +14,9 @@ const app = initializeApp(firebaseConfig);
 
 // Get user data from local storage
 const userData = JSON.parse(localStorage.getItem('userData'));
-
+if (userData && userData.name) {
+    document.getElementById("user_name").innerText = userData.name;
+}
 document.getElementById("guessForm").addEventListener("submit", async (event) => {
     event.preventDefault();
     const stockSymbol = document.getElementById("stock").value;
