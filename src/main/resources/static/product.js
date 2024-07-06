@@ -1,13 +1,13 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBkuX4fIYAxyYsJ0KpCh96S4E6IRH2Zh3c",
-    authDomain: "stockup-7cdb3.firebaseapp.com",
-    projectId: "stockup-7cdb3",
-    storageBucket: "stockup-7cdb3.appspot.com",
-    messagingSenderId: "368711125669",
-    appId: "1:368711125669:web:ddecaeea1fa70e774fdb4c",
-    measurementId: "G-D3C222YDPN"
+    apiKey: "AIzaSyC7qzfmew33btIrH4NQNShcMgFSm7SYR04",
+    authDomain: "stockup-dc330.firebaseapp.com",
+    projectId: "stockup-dc330",
+    storageBucket: "stockup-dc330.appspot.com",
+    messagingSenderId: "419133983663",
+    appId: "1:419133983663:web:fd7fb320cbf625ba1ebd5a",
+    measurementId: "G-42ZJ1F19GB"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -49,25 +49,28 @@ document.getElementById("guessForm").addEventListener("submit", async (event) =>
 
 // Function to fetch and display stock prices
 async function fetchStockPrices() {
-    const stockSymbols = ['AAPL', 'GOOGL', 'NSQ'];
+    const stockSymbols = [ 'AAPL', 'GOOGL', 'NSQ','MSFT', 'TATASTEEL'];
     const stockPriceElements = {
         'AAPL': document.getElementById('st_price1'),
         'GOOGL': document.getElementById('st_price2'),
         'NSQ': document.getElementById('st_price3'),
+        'MSFT': document.getElementById('st_price4'),
+        'TATASTEEL': document.getElementById('st_price5')
     };
 
     for (const symbol of stockSymbols) {
         try {
-            const response = await fetch('http://localhost:8080/getStockDetails', {
-                method: 'GET',
-                headers: {
-                    'accept': '*/*',
-                    'symbol': symbol
-                }
-            });
+            const response = await fetch(`http://localhost:8080/getStockDetails`, {
+            method: 'GET',
+            headers: {
+                'accept': '*/*',
+                'symbol': symbol
+            }
+        });
+
             if (response.ok) {
                 const stock = await response.json();
-                stockPriceElements[symbol].innerText = stock.currentPrice;  // Assuming the stock object has a price field
+                stockPriceElements[symbol].innerText = stock.currentPrice;  // Assuming the stock object has a currentPrice field
             } else {
                 console.error(`Failed to fetch stock details for ${symbol}`);
                 stockPriceElements[symbol].innerText = "Error";

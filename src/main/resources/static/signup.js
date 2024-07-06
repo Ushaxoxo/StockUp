@@ -7,13 +7,13 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBkuX4fIYAxyYsJ0KpCh96S4E6IRH2Zh3c",
-    authDomain: "stockup-7cdb3.firebaseapp.com",
-    projectId: "stockup-7cdb3",
-    storageBucket: "stockup-7cdb3.appspot.com",
-    messagingSenderId: "368711125669",
-    appId: "1:368711125669:web:ddecaeea1fa70e774fdb4c",
-    measurementId: "G-D3C222YDPN"
+    apiKey: "AIzaSyC7qzfmew33btIrH4NQNShcMgFSm7SYR04",
+    authDomain: "stockup-dc330.firebaseapp.com",
+    projectId: "stockup-dc330",
+    storageBucket: "stockup-dc330.appspot.com",
+    messagingSenderId: "419133983663",
+    appId: "1:419133983663:web:fd7fb320cbf625ba1ebd5a",
+    measurementId: "G-42ZJ1F19GB"
 };
 
 // Initialize Firebase
