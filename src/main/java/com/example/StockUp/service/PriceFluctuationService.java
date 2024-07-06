@@ -33,6 +33,9 @@ public class PriceFluctuationService {
     @Value("${priceUpdateIntervalSeconds}")
     private int priceUpdateIntervalSeconds;
 
+    @Value("${priceFluctuationToggle}")
+    private boolean priceFluctuationToggle;
+
     @Autowired
     public PriceFluctuationService(StockService stockService) {
         this.stockService = stockService;
@@ -41,7 +44,9 @@ public class PriceFluctuationService {
     @PostConstruct
     public void init() {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-        scheduler.scheduleAtFixedRate(this::updatePrices, 0, priceUpdateIntervalSeconds, TimeUnit.SECONDS);
+        if (priceFluctuationToggle){
+            scheduler.scheduleAtFixedRate(this::updatePrices, 0, priceUpdateIntervalSeconds, TimeUnit.SECONDS);
+        }
     }
 
     private void updatePrices() {
