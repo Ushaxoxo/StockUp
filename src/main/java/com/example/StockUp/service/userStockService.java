@@ -7,11 +7,15 @@ import com.google.cloud.Timestamp;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.QueryDocumentSnapshot;
+import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @Service
@@ -63,5 +67,20 @@ public class userStockService {
     private Timestamp addSecondsToTimestamp(Timestamp timestamp, int seconds) {
         long newSeconds = timestamp.getSeconds() + seconds;
         return Timestamp.ofTimeSecondsAndNanos(newSeconds, timestamp.getNanos());
+    }
+
+    public List<userStock> getUserStocksByUserName(String userName) throws ExecutionException, InterruptedException {
+        Firestore db = FirestoreClient.getFirestore();
+        ApiFuture<QuerySnapshot> future = db.collection("userStock")
+                .whereEqualTo("userName", userName)
+                .get();
+
+        List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+        List<userStock> userStocks = new ArrayList<>();
+        for (QueryDocumentSnapshot document : documents) {
+            userStocks.add(document.toObject(userStock.class));
+        }
+
+        return userStocks;
     }
 }

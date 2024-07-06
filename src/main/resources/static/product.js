@@ -84,6 +84,48 @@ async function fetchStockPrices() {
     }
 }
 
+async function fetchUserScores() {
+    const userName = userData.username;
+
+    try {
+        const response = await fetch(`http://localhost:8080/getUserScores`, {
+            method: 'GET',
+            headers: {
+                'accept': '*/*',
+                'userName': userName
+            }
+        });
+
+        if (response.ok) {
+            const userStocks = await response.json();
+            displayUserScores(userStocks);
+        } else {
+            console.error(`Failed to fetch user scores for ${userName}`);
+        }
+    } catch (e) {
+        console.error(`Error fetching user scores for ${userName}: `, e);
+    }
+}
+
+function displayUserScores(userStocks) {
+    const scoresElement = document.getElementById('user_scores');
+    scoresElement.innerHTML = '';
+
+    userStocks.forEach(stock => {
+        const stockElement = document.createElement('div');
+        stockElement.innerText = `Symbol: ${stock.symbol}, Score: ${stock.score}`;
+        scoresElement.appendChild(stockElement);
+    });
+}
+
+// Call fetchUserScores on page load
+window.onload = function () {
+    fetchStockPrices();
+    fetchUserScores();
+};
+
+
+
 // Attach event listener to the refresh button
 document.querySelector('a[href="/"]').addEventListener('click', (event) => {
     event.preventDefault();

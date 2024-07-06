@@ -135,14 +135,16 @@
 <footer class="bg-primary-gradient">
     <div class="container py-4 py-lg-5">
         <div class="row justify-content-center">
-            <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column" style="align-items: center;">
-                <h3 class="fs-6 fw-bold">Leaderboard</h3>
-                <ul class="list-unstyled">
-                    <li>
-                        <a class="hover-underline-animation" href="#">Placeholder</a>
-                    </li>
-                </ul>
-            </div>
+           <!-- Section to display user guesses and scores -->
+			<section id="my-guesses" class="container">
+    		<div class="card mt-2 p-4" id="card2">
+        	<h3 class="card-title">My Guesses</h3>
+        	<div id="guess-list" class="row justify-content-center align-items-center">
+            <!-- Guesses will be dynamically inserted here -->
+        </div>
+    </div>
+</section>
+
             <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column" style="align-items: center;">
                 <h3 class="fs-6 fw-bold">Leaderboard 2</h3>
                 <ul class="list-unstyled">

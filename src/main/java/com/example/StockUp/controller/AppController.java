@@ -9,6 +9,7 @@ import com.example.StockUp.service.userStockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @RestController
@@ -78,5 +79,11 @@ public class AppController {
     public String deleteGuess(@RequestHeader String id) throws ExecutionException, InterruptedException {
         return userstockService.deleteGuess(id);
     }
+    
+    @GetMapping("/getUserScores")
+    public List<userStock> getUserScores(@RequestHeader String userName) throws ExecutionException, InterruptedException {
+        return userstockService.getUserStocksByUserName(userName);
+    }
+
 
 }
