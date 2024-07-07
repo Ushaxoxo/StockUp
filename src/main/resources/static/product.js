@@ -50,6 +50,11 @@ document.getElementById("guessForm").addEventListener("submit", async (event) =>
 });
 
 // Function to fetch and display stock prices
+document.addEventListener('DOMContentLoaded', (event) => {
+    fetchStockPrices();
+    fetchUserScores();
+});
+
 async function fetchStockPrices() {
     const stockSymbols = [ 'AAPL', 'GOOGL', 'NSQ','MSFT', 'TATASTEEL'];
     const stockPriceElements = {
@@ -63,12 +68,12 @@ async function fetchStockPrices() {
     for (const symbol of stockSymbols) {
         try {
             const response = await fetch(`http://localhost:8080/getStockDetails`, {
-            method: 'GET',
-            headers: {
-                'accept': '*/*',
-                'symbol': symbol
-            }
-        });
+                method: 'GET',
+                headers: {
+                    'accept': '*/*',
+                    'symbol': symbol
+                }
+            });
 
             if (response.ok) {
                 const stock = await response.json();
@@ -108,23 +113,22 @@ async function fetchUserScores() {
 }
 
 function displayUserScores(userStocks) {
-    const scoresElement = document.getElementById('user_scores');
-    scoresElement.innerHTML = '';
+    let totalScore = 0;
 
-    userStocks.forEach(stock => {
-        const stockElement = document.createElement('div');
-        stockElement.innerText = `Symbol: ${stock.symbol}, Score: ${stock.score}`;
-        scoresElement.appendChild(stockElement);
+    userStocks.forEach(userStock => {
+        totalScore += userStock.score;
     });
+
+    console.log(`Total score for user: ${totalScore}`);
+
+    // Check if the element exists before trying to update it
+    const scoreElement = document.getElementById('totalScore');
+    if (scoreElement) {
+        scoreElement.innerText = `Total Score: ${totalScore}`;
+    } else {
+        console.error('Element with ID "totalScore" not found in the DOM');
+    }
 }
-
-// Call fetchUserScores on page load
-window.onload = function () {
-    fetchStockPrices();
-    fetchUserScores();
-};
-
-
 
 // Attach event listener to the refresh button
 document.querySelector('a[href="/"]').addEventListener('click', (event) => {
